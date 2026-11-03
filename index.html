@@ -88,6 +88,14 @@ footer{background:var(--brick);color:var(--stone);padding:36px 0 calc(36px + env
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;font-weight:600}
 @media(max-width:860px){.hero .grid,.svc,.price,.no .wrap{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.art{justify-self:center;max-width:280px}nav .links a:not(.pill){display:none}.hero .grid{padding-top:40px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.legal{display:none}
+.legal:target{display:block;position:fixed;inset:0;z-index:100;overflow:auto;background:var(--stone);padding:32px 20px 64px}
+.legal .in{max-width:760px;margin:0 auto}
+.legal h1{font-size:clamp(28px,5vw,44px);margin-bottom:6px}
+.legal h2{font:400 20px var(--head);margin:28px 0 8px;color:var(--brick)}
+.legal p{margin:0 0 10px}
+.legal .back{display:inline-block;margin-bottom:24px;font-weight:600}
+footer .pill{margin-bottom:8px}
 </style>
 </head>
 <body>
@@ -181,10 +189,37 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;
 
 <div class="tape" aria-hidden="true"></div>
 <footer><div class="wrap">
-<div><b>Kiezfix Handyman Services</b><br>Darren Johnson, Leberstr.63, 10829 Berlin</div>
-<div><a href="#" id="tel2">[Phone]</a><br><a href="#" id="mail2">[Email]</a></div>
-<div><a href="#impressum.html">Impressum (legal notice)</a> · <a href="#datenschutz.html">Privacy</a></div>
+<div><b>Kiezfix Handyman Services</b><br>Handyman in Berlin</div>
+<div><a class="pill" id="tel2" href="#">Call me</a> <a class="pill" id="wa2" href="#" target="_blank" rel="noopener">WhatsApp</a><br><a href="#" id="mail2">[Email]</a></div>
+<div><a href="#impressum">Impressum (legal notice)</a> · <a href="#datenschutz">Privacy</a></div>
 </div></footer>
+
+<section class="legal" id="impressum"><div class="in"><a class="back" href="#top">← Back to the site</a>
+<h1>Impressum</h1><p>Legal notice</p>
+<h2>Angaben gemäß § 5 DDG</h2>
+<p>Kiezfix Handyman Services<br>Inhaber: Darren Johnson<br>[Straße und Hausnummer], [PLZ] Berlin</p>
+<h2>Kontakt</h2>
+<p>E-Mail: <a href="mailto:info@kiezfixberlin.com">info@kiezfixberlin.com</a><br>WhatsApp: über den Button auf dieser Website</p>
+<h2>Umsatzsteuer</h2>
+<p>[Eine Variante wählen: „Kleinunternehmer gemäß § 19 UStG, es wird keine Umsatzsteuer ausgewiesen.“ ODER „Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: DE…“]</p>
+<h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+<p>Darren Johnson, Anschrift wie oben</p>
+<h2>Verbraucherstreitbeilegung</h2>
+<p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+</div></section>
+<section class="legal" id="datenschutz"><div class="in"><a class="back" href="#top">← Back to the site</a>
+<h1>Datenschutzerklärung</h1><p>Privacy policy</p>
+<h2>Verantwortlicher</h2>
+<p>Darren Johnson, Kiezfix Handyman Services, [Straße und Hausnummer], [PLZ] Berlin<br>E-Mail: info@kiezfixberlin.com</p>
+<h2>Hosting und Server-Logfiles</h2>
+<p>Beim Aufruf dieser Website verarbeitet unser Hosting-Anbieter [Name des Hosters] technisch notwendige Daten (IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browsertyp). Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (sicherer und stabiler Betrieb der Website). Die Daten werden nach [Speicherdauer laut Hoster] gelöscht.</p>
+<h2>Schriftarten (Google Fonts)</h2>
+<p>Diese Website lädt Schriftarten von Google Fonts (Google Ireland Limited). Dabei wird Ihre IP-Adresse an Google übertragen. [Diesen Abschnitt streichen, sobald die Schriftarten lokal eingebunden sind.]</p>
+<h2>Kontaktaufnahme per WhatsApp, E-Mail oder Telefon</h2>
+<p>Wenn Sie uns kontaktieren, verarbeiten wir Ihre Angaben (z. B. Name, Telefonnummer, Beschreibung und Fotos des Auftrags, Ort) zur Bearbeitung Ihrer Anfrage. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO. Bei Nutzung von WhatsApp (WhatsApp Ireland Limited) gelten zusätzlich deren Datenschutzbestimmungen. Die Anfrage-Schaltflächen auf dieser Website öffnen lediglich Ihre App mit einem vorausgefüllten Text; Ihre Eingaben auf der Website werden nicht gespeichert oder an uns übertragen.</p>
+<h2>Ihre Rechte</h2>
+<p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Sie können sich außerdem bei einer Aufsichtsbehörde beschweren, z. B. bei der Berliner Beauftragten für Datenschutz und Informationsfreiheit, Alt-Moabit 59–61, 10555 Berlin.</p>
+</div></section>
 
 <script>
 (function(){
@@ -203,8 +238,9 @@ function upd(){var m=encodeURIComponent(msg());
 wa.href="https://wa.me/"+PHONE+"?text="+m;
 mail.href="mailto:"+MAIL+"?subject="+encodeURIComponent("Handyman request")+"&body="+m;}
 document.getElementById("request").addEventListener("input",upd);upd();
-["tel","tel2"].forEach(function(id){var e=document.getElementById(id);e.href="tel:+"+PHONE;if(id==="tel2")e.textContent=PHONE_SHOW;});
+["tel","tel2"].forEach(function(id){var e=document.getElementById(id);e.href="tel:+"+PHONE;});
 var m2=document.getElementById("mail2");m2.href="mailto:"+MAIL;m2.textContent=MAIL;
+var w2=document.getElementById("wa2");w2.href="https://wa.me/"+PHONE;
 })();
 </script>
 </body>
